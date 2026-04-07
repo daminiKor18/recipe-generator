@@ -34,8 +34,7 @@ Body (Web): Flask, HTML5, CSS3 (Custom Artisan Theme).
 Tools: JavaScript (for PDF saving and Voice Guide).
 
 💻 How to Run It
-Clone: git clone https://github.com/your-username/ingredi-gen.git
-
+Clone: git clone git clone https://github.com/daminiKor18/recipe-generator.git
 Install: pip install -r requirements.txt
 
 Launch: python run.py
