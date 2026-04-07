@@ -1,0 +1,4 @@
+venv/
+.env
+__pycache__/
+Foodimg2Ing/data/modelbest.ckpt

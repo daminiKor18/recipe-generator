@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container pt-5 pb-5 animate-fade-in">
+    <div class="row align-items-end mb-5">
+        <div class="col-md-8">
+            <h6 class="text-pink font-weight-bold tracking-wider text-uppercase" style="font-size: 0.7rem;">Kitchen Command Center</h6>
+            <h1 class="display-4 font-weight-bold">Bonjour, <span class="text-gradient">{{ stats.name }}</span></h1>
+        </div>
+        <div class="col-md-4 text-md-right no-print">
+            <span class="badge badge-soft-pink p-3 rounded-pill">
+                <i class="fas fa-crown mr-2"></i>Rank: <strong>{{ stats.rank }}</strong>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="dashboard-stats-strip d-flex align-items-center shadow-sm mb-4">
+                <div class="stat-box flex-fill text-center border-right">
+                    <div class="stat-value">{{ stats.recipes_analyzed }}</div>
+                    <div class="stat-label">Analyses</div>
+                </div>
+                <div class="stat-box flex-fill text-center border-right">
+                    <div class="stat-value text-pink">{{ stats.fav_cuisine }}</div>
+                    <div class="stat-label">Main Style</div>
+                </div>
+                <div class="stat-box flex-fill text-center">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-lg promo-card overflow-hidden mb-4">
+                <div class="row no-gutters h-100">
+                    <div class="col-md-6 bg-pink-gradient p-5 d-flex flex-column justify-content-center">
+                        <h3 class="text-white font-weight-bold">Master the Sourdough</h3>
+                        <p class="text-white-50">Upload a photo of your crust today to get a professional aeration analysis.</p>
+                        <button class="btn btn-light rounded-pill btn-sm font-weight-bold mt-3 w-50" id="btn-start-now">Start Now</button>
+                    </div>
+                    <div class="col-md-6 d-none d-md-block">
+                        <img src="{{ url_for('static', filename='images/cover.jpg') }}" class="h-100 w-100" style="object-fit: cover;" alt="Master Sourdough">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm p-4 mb-4 action-card">
+                <h5 class="font-weight-bold mb-4"><i class="fas fa-bolt mr-2 text-pink"></i>Quick Actions</h5>
+                
+                <div class="action-item d-flex align-items-center mb-3 p-3 rounded-lg" id="action-new-analysis">
+                    <div class="action-icon bg-soft-pink mr-3"><i class="fas fa-camera"></i></div>
+                    <div>
+                        <h6 class="mb-0 font-weight-bold">New Analysis</h6>
+                        <small class="text-muted">Upload dish photo</small>
+                    </div>
+                </div>
+
+                <div class="action-item d-flex align-items-center mb-3 p-3 rounded-lg" id="action-explore">
+                    <div class="action-icon bg-light mr-3"><i class="fas fa-search"></i></div>
+                    <div>
+                        <h6 class="mb-0 font-weight-bold">Explore Atelier</h6>
+                        <small class="text-muted">Browse 120+ cuisines</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm p-4 text-center goal-card">
+                <h6 class="text-muted small text-uppercase tracking-wider mb-3">Weekly Goal</h6>
+                <div class="progress-circle mx-auto mb-3">
+                    <span class="progress-value">4/5</span>
+                </div>
+                <p class="small text-muted mb-0">One more <strong>Vegetarian</strong> dish to reach your weekly streak!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-gradient { 
+        background: linear-gradient(135deg, #2d3436, #f78fb3); 
+        -webkit-background-clip: text; 
+        background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+    }
+    .bg-pink-gradient { background: linear-gradient(135deg, #f8a5c2, #f78fb3); }
+    .text-pink { color: #f78fb3 !important; }
+    .bg-soft-pink { background: #fff0f3; color: #f78fb3; }
+    .dashboard-stats-strip { background: white; border-radius: 25px; padding: 20px; border: 1px solid rgba(248,165,194,0.1); }
+    .stat-value { font-size: 1.8rem; font-weight: 800; line-height: 1; }
+    .stat-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: #636e72; margin-top: 5px; }
+    .action-item { cursor: pointer; transition: 0.3s ease; border: 1px solid transparent; }
+    .action-item:hover { background: #fafafa; border-color: #f8a5c2; transform: translateX(5px); }
+    .action-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .progress-circle {
+        width: 100px; height: 100px; border-radius: 50%;
+        background: conic-gradient(#f8a5c2 80%, #eee 0);
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
+    }
+    .progress-circle::after {
+        content: ''; position: absolute; width: 85px; height: 85px;
+        background: white; border-radius: 50%;
+    }
+    .progress-value { position: relative; z-index: 1; font-weight: 800; font-size: 1.2rem; color: #2d3436; }
+    .promo-card { border-radius: 30px; transition: 0.4s ease; }
+    .promo-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(248,165,194,0.3) !important; }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const homeUrl = "{{ url_for('home') }}";
+        const exploreUrl = "{{ url_for('explore') }}";
+
+        document.getElementById('btn-start-now').addEventListener('click', () => window.location.href = homeUrl);
+        document.getElementById('action-new-analysis').addEventListener('click', () => window.location.href = homeUrl);
+        document.getElementById('action-explore').addEventListener('click', () => window.location.href = exploreUrl);
+    });
+</script>
+
+{% endblock content %}

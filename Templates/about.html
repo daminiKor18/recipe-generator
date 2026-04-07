@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container pt-5 pb-5 animate-fade-in">
+    <div class="text-center mb-5 mt-4">
+        <span class="project-badge text-uppercase font-weight-bold mb-3 d-inline-block animate-slide-up">
+            <i class="fas fa-microchip mr-1"></i> Neural Generation Engine
+        </span>
+        <h1 class="display-3 font-weight-bold text-gradient mb-4">Ingredi-Gen</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 750px; font-weight: 300; line-height: 1.8;">
+            <span class="font-weight-bold text-pink">Ingredi-Gen</span> is a fusion of **Advanced Deep Learning** and **Generative Culinary Logic**. We don't just identify food; we decode the technical blueprint of every recipe.
+        </p>
+    </div>
+
+    <div class="row mt-5">
+        {% for stage in evolution %}
+        <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow-premium h-100 p-4 transition-up stage-card" style="border: 1px solid rgba(248,165,194,0.1) !important;">
+                <div class="bg-soft-pink rounded-circle d-flex align-items-center justify-content-center mb-4 stage-icon-box" style="width: 70px; height: 70px;">
+                    <i class="fas {{ stage.icon }} text-pink fa-xl"></i>
+                </div>
+                <h6 class="tracking-widest text-pink font-weight-bold mb-2 small text-uppercase">{{ stage.phase }}</h6>
+                <h4 class="font-weight-bold mb-3 text-dark">{{ stage.title }}</h4>
+                <p class="text-muted small mb-0" style="line-height: 1.8; font-size: 0.9rem;">{{ stage.desc }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-4 p-4 shadow-premium text-center text-white philosophy-banner border-0">
+        <div class="position-relative z-index-1 d-flex align-items-center justify-content-center flex-column flex-md-row py-2 w-100">
+            <div class="px-md-5 mb-3 mb-md-0 border-md-right quote-section">
+                <i class="fas fa-quote-left fa-lg mb-2 d-block opacity-50"></i>
+                <h2 class="font-weight-bold mb-0 quote-text-slim">"Technology is the secret ingredient."</h2>
+            </div>
+            <div class="px-md-5 mission-section">
+                <p class="mb-0 small-lead">
+                    We built a bridge between the complexity of Neural Networks and the warmth of an artisan kitchen. Ingredi-Gen is that bridge.
+                </p>
+            </div>
+        </div>
+        <div class="philosophy-overlay"></div>
+    </div>
+
+    <div class="mt-5 pt-5 text-center no-print">
+        <p class="small text-muted text-uppercase tracking-widest mb-4 font-weight-bold" style="font-size: 0.7rem;">Engineered with Precision</p>
+        <div class="d-flex justify-content-center align-items-center opacity-75 grayscale-icons">
+            <div class="mx-4" title="Python"><i class="fab fa-python fa-2x"></i></div>
+            <div class="mx-4" title="Deep Learning"><i class="fas fa-brain fa-2x"></i></div>
+            <div class="mx-4" title="Flask Framework"><i class="fas fa-server fa-2x"></i></div>
+            <div class="mx-4" title="Modern UI"><i class="fab fa-js-square fa-2x"></i></div>
+        </div>
+    </div>
+
+    <div class="mt-5 py-5 text-center border-top">
+        <h2 class="recipe-title mb-3" style="font-size: 2.5rem !important;">Ready to begin your story?</h2>
+        <a href="/" class="btn btn-pink rounded-pill px-5 py-3 shadow-sm font-weight-bold text-uppercase tracking-wider" style="font-size: 0.8rem;">
+            <i class="fas fa-magic mr-2"></i> Start Your First Analysis
+        </a>
+        <p class="text-muted mt-4 small">— The Ingredi-Gen Executive Team</p>
+    </div>
+</div>
+
+<style>
+    /* Premium Palette */
+    .tracking-widest { letter-spacing: 0.2em; }
+    .shadow-premium { box-shadow: 0 30px 60px rgba(0,0,0,0.06) !important; }
+    .bg-soft-pink { background: #fff0f3; }
+    .text-pink { color: #f78fb3 !important; }
+    .btn-pink { background: #f8a5c2; color: white; border: none; transition: 0.3s; }
+    .btn-pink:hover { background: #f78fb3; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(248,165,194,0.3); color: white; }
+
+    /* Stage Cards */
+    .stage-card { border-radius: 40px; background: rgba(255,255,255,0.95); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .stage-card:hover { transform: translateY(-15px); border-color: var(--primary) !important; box-shadow: 0 40px 80px rgba(248,165,194,0.12) !important; }
+    .stage-icon-box { transition: 0.5s ease; }
+    .stage-card:hover .stage-icon-box { background: var(--primary); }
+    .stage-card:hover .stage-icon-box i { color: white !important; }
+
+    /* --- REFINED PHILOSOPHY BANNER CSS --- */
+    .philosophy-banner {
+        border-radius: 35px;
+        background: linear-gradient(135deg, #f8a5c2 0%, #f78fb3 100%);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 160px;
+    }
+
+    .quote-text-slim { font-family: 'Dancing Script', cursive; font-size: 2.2rem; line-height: 1.2; }
+    .small-lead { font-size: 1rem; opacity: 0.95; font-weight: 300; line-height: 1.6; text-align: left; }
+
+    .philosophy-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at top right, rgba(255,255,255,0.15) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+        .border-md-right { border-right: 1px solid rgba(255,255,255,0.3) !important; }
+        .quote-section { flex: 1; text-align: right; }
+        .mission-section { flex: 1; text-align: left; }
+    }
+
+    @media (max-width: 767px) {
+        .quote-text-slim { font-size: 1.8rem; }
+        .small-lead { text-align: center; }
+    }
+
+    /* Tech Stack */
+    .grayscale-icons i { transition: 0.4s; cursor: pointer; color: #a4b0be; }
+    .grayscale-icons i:hover { color: #f8a5c2; transform: scale(1.3); }
+
+    .z-index-1 { z-index: 1; }
+</style>
+
+{% endblock content %}

@@ -1,0 +1,226 @@
+/* Ingredi-Gen | Neural Recipe Engine - Final Production Version 2026 */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary: #f8a5c2;         /* Peony Pink */
+    --primary-dark: #f78fb3;    /* Deep Rose */
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    --card-bg: rgba(255, 255, 255, 0.88); /* Glassmorphism Base */
+}
+
+body {
+    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), 
+                url('../images/bakery-bg.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* --- 1. Startup Navigation --- */
+.navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(248, 165, 194, 0.1);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled {
+    padding: 0.4rem 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.brand-text {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--text-main);
+}
+
+.text-gradient { 
+    background: linear-gradient(135deg, #2d3436, #f78fb3); 
+    -webkit-background-clip: text; 
+    background-clip: text; /* FIXED: Standard property added */
+    -webkit-text-fill-color: transparent; 
+}
+
+/* Expandable Search Input */
+.search-box { position: relative; display: flex; align-items: center; }
+.search-input {
+    width: 0px; border: none; padding: 0; outline: none;
+    transition: 0.4s ease; background: transparent;
+    border-bottom: 2px solid var(--primary);
+    font-size: 0.85rem; opacity: 0;
+}
+.search-box:hover .search-input, .search-input:focus {
+    width: 150px; padding: 5px 10px; opacity: 1;
+}
+.search-icon-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; }
+
+/* Engine Status Badge */
+.project-badge { 
+    letter-spacing: 2px; 
+    font-size: 0.65rem; 
+    color: #f78fb3; 
+    background: #fff0f3;
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(248, 165, 194, 0.2);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* --- 2. Interactive Image Wrapper --- */
+.wrapper {
+    position: relative;
+    height: 380px !important;
+    width: 100%;
+    border-radius: 30px;
+    background: var(--card-bg);
+    border: 2px dashed var(--primary);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.wrapper.active {
+    border: 2px solid var(--primary);
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(248, 165, 194, 0.2);
+}
+
+#foodimage { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- 3. Recipe Content & Voice Guide --- */
+#info, .card, .card-body, .recipe-steps { 
+    height: auto !important; 
+    min-height: min-content;
+    overflow: visible !important; 
+}
+
+.card {
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+}
+
+.recipe-step-item { 
+    display: flex !important;
+    align-items: flex-start !important;
+    transition: all 0.4s ease; 
+    border-radius: 15px; 
+    margin-bottom: 1.2rem;
+}
+
+.voice-highlight {
+    background: #fffafa !important;
+    padding: 15px;
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(248, 165, 194, 0.15);
+    border-left: 5px solid var(--primary);
+}
+
+/* --- 4. Nutritional Intelligence Styling --- */
+.nutrition-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(248, 165, 194, 0.2);
+    border-radius: 25px;
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease;
+}
+
+/* --- 5. Interactive Buttons --- */
+#custom-btn {
+    background: linear-gradient(135deg, #f8a5c2, #f78fb3);
+    color: white; height: 55px; border-radius: 15px;
+    font-weight: 600; text-transform: uppercase;
+    transition: 0.3s ease; border: none; width: 100%;
+    box-shadow: 0 8px 20px rgba(248, 165, 194, 0.3);
+    cursor: pointer;
+}
+
+.btn-outline-pink { border-color: var(--primary); color: var(--primary-dark); transition: 0.3s; }
+.btn-outline-pink:hover, .btn-speaking {
+    background: var(--primary) !important;
+    color: white !important;
+}
+
+@keyframes pulse-pink {
+    0% { box-shadow: 0 0 0 0 rgba(248, 165, 194, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(248, 165, 194, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(248, 165, 194, 0); }
+}
+.btn-speaking { animation: pulse-pink 2s infinite; }
+
+/* --- 6. Typography & Tags --- */
+.recipe-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.2rem !important;
+    color: var(--primary-dark) !important;
+    line-height: 1.2;
+}
+
+.step-badge {
+    background: linear-gradient(135deg, #f8a5c2, #f78fb3);
+    color: white; 
+    min-width: 38px !important; 
+    max-width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-weight: 700; 
+    box-shadow: 0 4px 10px rgba(248, 165, 194, 0.3);
+    flex-shrink: 0 !important;
+    margin-right: 15px;
+}
+
+.ingredient-tag {
+    font-size: 0.95rem; border-left: 3px solid var(--primary) !important;
+    background: white !important; transition: 0.3s;
+}
+
+/* --- 7. THE "PERFECT PRINT" ENGINE --- */
+@media print {
+    html, body {
+        background: white !important;
+        color: #000 !important;
+        height: auto !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact; /* FIXED: Standard property added */
+    }
+
+    .no-print, .navbar, footer, #custom-btn, .wrapper, #loading, .btn {
+        display: none !important;
+    }
+
+    .recipe-step-item {
+        display: flex !important;
+        page-break-inside: avoid !important; 
+        break-inside: avoid-page !important; 
+    }
+
+    .step-badge {
+        background: #f8a5c2 !important; 
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact; /* FIXED: Standard property added */
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #fff; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }

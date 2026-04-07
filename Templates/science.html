@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container pt-5 pb-5 animate-fade-in">
+    <div class="row mb-5">
+        <div class="col-lg-8">
+            <h6 class="text-pink font-weight-bold tracking-widest text-uppercase" style="font-size: 0.7rem;">Technical Documentation</h6>
+            <h1 class="display-4 font-weight-bold">The <span class="text-gradient">Neural Architecture</span></h1>
+            <p class="text-muted lead">Deep learning inference utilizing ResNet-50 v2 for high-precision culinary ingredient extraction.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow-lg h-100 p-4 stage-card">
+                <h5 class="font-weight-bold mb-4 text-pink"><i class="fas fa-microchip mr-2"></i>Model Specs</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-3 d-flex justify-content-between border-bottom pb-2">
+                        <span class="text-muted">Core Model</span>
+                        <span class="font-weight-bold text-dark">{{ specs.model }}</span>
+                    </li>
+                    <li class="mb-3 d-flex justify-content-between border-bottom pb-2">
+                        <span class="text-muted">Framework</span>
+                        <span class="font-weight-bold text-dark">{{ specs.framework }}</span>
+                    </li>
+                    <li class="mb-3 d-flex justify-content-between border-bottom pb-2">
+                        <span class="text-muted">Total Layers</span>
+                        <span class="font-weight-bold text-dark">{{ specs.layers }} Layers</span>
+                    </li>
+                    <li class="mb-3 d-flex justify-content-between">
+                        <span class="text-muted">Target Precision</span>
+                        <span class="font-weight-bold text-pink">{{ specs.accuracy }}</span>
+                    </li>
+                </ul>
+                <div class="bg-soft-pink p-3 rounded-lg mt-auto">
+                    <small class="text-pink font-weight-bold d-block mb-1">Status:</small>
+                    <small class="text-dark">Inference Engine is currently optimized for CPU/GPU hybrid acceleration.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 mb-4">
+            <div class="card border-0 shadow-lg h-100 overflow-hidden stage-card">
+                <div class="p-4 bg-white border-bottom">
+                    <h5 class="font-weight-bold mb-0"><i class="fas fa-project-diagram text-pink mr-2"></i>Inference Pipeline</h5>
+                </div>
+                <div class="p-5 text-center d-flex align-items-center justify-content-center bg-light" style="min-height: 300px;">
+                    <div class="pipeline-visual d-flex align-items-center w-100 justify-content-around">
+                        <div class="pipeline-node">
+                            <i class="fas fa-camera fa-2x text-pink mb-2"></i>
+                            <small class="d-block font-weight-bold">Input Image</small>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                        <div class="pipeline-node">
+                            <div class="spinner-grow text-pink" role="status" style="width: 3rem; height: 3rem;"></div>
+                            <small class="d-block font-weight-bold mt-2">ResNet-50</small>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                        <div class="pipeline-node">
+                            <i class="fas fa-list-ul fa-2x text-pink mb-2"></i>
+                            <small class="d-block font-weight-bold">Logic Mapping</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm p-4 mb-4 stage-card">
+                <h6 class="font-weight-bold mb-3">Feature Extraction</h6>
+                <p class="small text-muted">The model uses Residual Blocks to prevent the vanishing gradient problem, allowing the engine to learn deeper textures in food images (like crust aeration or vegetable dicing patterns).</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm p-4 mb-4 stage-card">
+                <h6 class="font-weight-bold mb-3">Culinary Heuristics</h6>
+                <p class="small text-muted">Post-inference, our <strong>Dietary Intelligence Helper</strong> maps identified ingredients against a 20-point non-vegetarian keyword vector to classify dishes instantly.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Science Page Specific Styles */
+    .text-gradient { 
+        background: linear-gradient(135deg, #2d3436, #f78fb3); 
+        -webkit-background-clip: text; 
+        background-clip: text;
+        -webkit-text-fill-color: transparent; 
+    }
+    .bg-soft-pink { background: #fff0f3; }
+    .text-pink { color: #f78fb3 !important; }
+    .stage-card { border-radius: 30px; transition: 0.3s ease; }
+    .stage-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important; }
+    
+    .pipeline-node { transition: 0.3s; }
+    .pipeline-node:hover { transform: scale(1.1); color: #f78fb3; }
+    
+    .tracking-widest { letter-spacing: 3px; }
+</style>
+
+{% endblock content %}
