@@ -1,3 +1,4 @@
+![app screenshot2](screenshot2.png)
 ![app screenshot](Screenshot.png)
 🥐 Ingredi-Gen | Neural Recipe Engine
 A Deep Learning web application that turns food photos into recipes.
@@ -37,4 +38,4 @@ Clone: git clone https://github.com/your-username/ingredi-gen.git
 
 Install: pip install -r requirements.txt
 
-Launch: python app.py
+Launch: python run.py
